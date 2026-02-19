@@ -10,34 +10,43 @@ export const App: React.FC = () => {
 
   const hendleButtonAll = async () => {
     const goods = await getAll();
-    setGoodsFromServer(goods);
+
+    setGoodsFromServer(goods as Good[]);
   };
+
   const hendleButton5first = async () => {
     const goods = await get5First();
-    setGoodsFromServer(goods);
+
+    setGoodsFromServer(goods as Good[]);
   };
+
   const hendleButtonRedGoods = async () => {
     const goods = await getRedGoods();
-    setGoodsFromServer(goods);
+
+    setGoodsFromServer(goods as Good[]);
   };
 
   return (
-  <div className="App">
-    <h1>Dynamic list of Goods</h1>
+    <div className="App">
+      <h1>Dynamic list of Goods</h1>
 
-    <button type="button" data-cy="all-button" onClick={hendleButtonAll}>
-      Load all goods
-    </button>
+      <button type="button" data-cy="all-button" onClick={hendleButtonAll}>
+        Load all goods
+      </button>
 
-    <button type="button" data-cy="first-five-button" onClick={hendleButton5first}>
-      Load 5 first goods
-    </button>
+      <button
+        type="button"
+        data-cy="first-five-button"
+        onClick={hendleButton5first}
+      >
+        Load 5 first goods
+      </button>
 
-    <button type="button" data-cy="red-button" onClick={hendleButtonRedGoods}>
-      Load red goods
-    </button>
+      <button type="button" data-cy="red-button" onClick={hendleButtonRedGoods}>
+        Load red goods
+      </button>
 
-    <GoodsList goods={goodsFromServer} />
-  </div>
+      <GoodsList goods={goodsFromServer} />
+    </div>
   );
 };
